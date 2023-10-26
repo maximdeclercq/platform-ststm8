@@ -24,12 +24,12 @@ env = DefaultEnvironment()
 board_config = env.BoardConfig()
 
 env.Replace(
-    AR="sdar",
-    AS="sdasstm8",
+    AR="stm8-ar",
+    AS="stm8-as",
     CC="sdcc",
     GDB="stm8-gdb",
-    LD="sdldstm8",
-    RANLIB="sdranlib",
+    LD="stm8-ld",
+    RANLIB="stm8-ranlib",
     OBJCOPY="stm8-objcopy",
     SIZETOOL="stm8-size",
     OBJSUFFIX=".rel",
@@ -52,7 +52,8 @@ env.Replace(
         "--nostdlib",
         "--code-size", board_config.get("upload.maximum_size"),
         "--iram-size", board_config.get("upload.maximum_ram_size"),
-        "--out-fmt-elf"
+        "--out-fmt-elf",
+        "--out-fmt-el2"
     ],
 
     LIBPATH=[
